@@ -21,17 +21,19 @@ name = argus-pep-common
 version = 2.3.0
 release = 1
 
-dist_url = http://github.com/downloads/argus-authz/$(name)/$(name)-$(version).tar.gz
+git_url = https://github.com/argus-authz/$(name).git
+git_branch = EMI-3
+
+dist_url = https://github.com/downloads/argus-authz/$(name)/$(name)-$(version).tar.gz
 spec_file = fedora/$(name).spec
 rpmbuild_dir = $(CURDIR)/rpmbuild
 
 
 all: srpm
 
-
 clean:
 	@echo "Cleaning..."
-	rm -rf $(rpmbuild_dir) $(spec_file) *.rpm
+	rm -rf $(rpmbuild_dir) $(spec_file) *.rpm $(name)
 
 
 spec:
@@ -56,3 +58,10 @@ rpm: pre_rpmbuild
 	rpmbuild --nodeps -v -ba $(spec_file) --define "_topdir $(rpmbuild_dir)"
 	find $(rpmbuild_dir)/RPMS -name "*.rpm" -exec cp '{}' . \;
 
+git_source:
+	@echo "Checkout source from $(git_url)"
+	git clone $(git_url)
+	(cd $(name) && git checkout $(git_branch))
+	(cd $(name) && make dist)
+	mkdir -p $(rpmbuild_dir)/SOURCES
+	cp $(name)/$(name)-$(version).tar.gz $(rpmbuild_dir)/SOURCES
