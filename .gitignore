@@ -1,4 +1,5 @@
 /*.rpm
 /fedora/argus-pep-common.spec
 /rpmbuild
+/argus-pep-common
 
