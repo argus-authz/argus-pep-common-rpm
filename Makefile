@@ -22,7 +22,8 @@ version = 2.3.0
 release = 1
 
 git_url = https://github.com/argus-authz/$(name).git
-git_branch = EMI-3
+#git_branch = EMI-3
+git_branch = $(version)
 
 dist_url = https://github.com/downloads/argus-authz/$(name)/$(name)-$(version).tar.gz
 spec_file = fedora/$(name).spec
