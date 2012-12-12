@@ -21,10 +21,11 @@ name = argus-pep-common
 version = 2.3.0
 release = 1
 
-git_url = https://github.com/argus-authz/$(name).git
-git_branch = EMI-3
+dist_url = http://argus-authz.github.com/$(name)/distrib/$(name)-$(version).tar.gz
 
-dist_url = https://github.com/downloads/argus-authz/$(name)/$(name)-$(version).tar.gz
+git_url = https://github.com/argus-authz/$(name).git
+git_branch = $(version)
+
 spec_file = fedora/$(name).spec
 rpmbuild_dir = $(CURDIR)/rpmbuild
 
