@@ -24,7 +24,8 @@ release = 1
 dist_url = http://argus-authz.github.com/$(name)/distrib/$(name)-$(version).tar.gz
 
 git_url = https://github.com/argus-authz/$(name).git
-git_branch = $(version)
+git_branch = EMI-3
+#git_branch = $(version)
 
 spec_file = fedora/$(name).spec
 rpmbuild_dir = $(CURDIR)/rpmbuild
